@@ -14,8 +14,9 @@ import javax.persistence.*;
 public class Items extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //3
     private Long id;
+
 
     @Column(length = 100, nullable = false)
     private String prd_title;
@@ -30,21 +31,21 @@ public class Items extends BaseTimeEntity {
     private String bar_code;
 
     @Column
-    private float prc_prc;
+    private String prc_prc;
 
     @Builder
-    public Items(Long id, String prd_title, String prd_code, String bar_code, String contributor, float prc_prc) {
+    public Items(String prd_title, String prd_code, String contributor, String bar_code, String prc_prc) {
 
-        this.id = id;
         this.prd_title = prd_title;
         this.prd_code = prd_code;
-        this.bar_code = bar_code;
         this.contributor = contributor;
+        this.bar_code = bar_code;
         this.prc_prc = prc_prc;
     }
 
-    public void update(String contributor, float price) {
-        this.contributor = contributor;
-        this.prc_prc = price;
-    }
+//    public void update(String contributor, float price) {
+//
+//        this.contributor = contributor;
+//        this.prc_prc = price;
+//    }
 }
