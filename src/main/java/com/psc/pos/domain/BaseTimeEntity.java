@@ -1,6 +1,5 @@
 package com.psc.pos.domain;
 
-
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -8,17 +7,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class BaseTimeEntity {
+public abstract class BaseTimeEntity {
 
-    @CreatedDate // 3
+    @CreatedDate
     private LocalDateTime createdDate;
 
-    @LastModifiedDate // 4
+    @LastModifiedDate
     private LocalDateTime modifiedDate;
-
 }

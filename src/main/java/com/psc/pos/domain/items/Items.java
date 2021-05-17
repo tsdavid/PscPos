@@ -14,38 +14,39 @@ import javax.persistence.*;
 public class Items extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //3
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String title;
 
-    @Column(length = 100, nullable = false)
-    private String prd_title;
+    @Column(nullable = false)
+    private String barcode;
 
-    @Column(length = 100, nullable = false)
-    private String prd_code;
-
-    @Column(length = 500, nullable = false)
-    private String contributor;
-
-    @Column(length = 200, nullable = false)
-    private String bar_code;
-
-    @Column
-    private String prc_prc;
+    private Long price;
 
     @Builder
-    public Items(String prd_title, String prd_code, String contributor, String bar_code, String prc_prc) {
+    public Items(String title, String barcode, Long price) {
 
-        this.prd_title = prd_title;
-        this.prd_code = prd_code;
-        this.contributor = contributor;
-        this.bar_code = bar_code;
-        this.prc_prc = prc_prc;
+        this.title = title;
+        this.barcode = barcode;
+        this.price = price;
     }
 
-//    public void update(String contributor, float price) {
-//
-//        this.contributor = contributor;
-//        this.prc_prc = price;
-//    }
+
+    @Override
+    public String toString() {
+        return "Items{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", barcode='" + barcode + '\'' +
+                ", price=" + price +
+                '}';
+    }
+
+    public void update(String title, Long price) {
+
+        this.title = title;
+        this.price = price;
+    }
 }

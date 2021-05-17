@@ -40,6 +40,7 @@ Query ITEMS With BarCode
 <div class="query-section section">
 
     <input type="text" class="query-input" id="barcode-input" onkeydown="barcode();" placeholder="Search Barcode">
+    <a href="/register/save" role="button" class="btn btn-secondary">Create</a>
 </div>
 
 <div class="result-section section">
@@ -51,20 +52,21 @@ Query ITEMS With BarCode
     <table class="table table-horizontal table-bordered">
         <thead class="thead-strong">
         <tr>
-            <th>Post-Number</th>
+            <th>Item-Number</th>
             <th>Title</th>
-            <th>Author</th>
+            <th>barcode</th>
+            <th>price</th>
             <th>last-modified</th>
         </tr>
         </thead>
         <tbody id="tbody">
         {{#items}}  <!-- 1  posts라는 List를 순회, Java의 for 문과 동일-->
         <tr>
-            <td id="id">{{barcode}}</td>    <!-- 2 List에서 뽑아낸 객체의 필드를 사용-->
-            <td><a href="posts/update/{{id}}"> {{title}} </a></td>
-            <td>{{author}}</td>
-            <td>{{modifiedDate}}</td>
-            <td><a href="posts/update/{{id}}"> edit </a></td>
+            <td id="id">{{id}}</td>    <!-- 2 List에서 뽑아낸 객체의 필드를 사용-->
+            <td><a href="items/update/{{id}}"> {{title}} </a></td>
+            <td>{{barcode}}</td>
+            <td>{{price}}</td>
+            <td><a href="items/update/{{id}}"> edit </a></td>
             <td> delete </td>
         </tr>
         {{/items}}
@@ -73,6 +75,7 @@ Query ITEMS With BarCode
 
 
 </div>
+
 
 CREATE - items
 UPDATE - items
